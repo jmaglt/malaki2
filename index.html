@@ -61,7 +61,7 @@
         let selected = "";
         let capacity = "";
 
-        function selectPkg(name, cap) {
+        function selectPkg(name, cap) 
             selected = name;
             capacity = cap;
             document.getElementById('selected-name').innerText = name;
@@ -71,8 +71,7 @@
 
         function sendOrder() {
             // تأكد من وضع رقم الواتساب الصحيح هنا أيضاً
-            let msg = `أهلاً ملاكي، أريد الاشتراك في باقة: ${selected} (${capacity}).\nلقد قمت برفع الصورة في الموقع، يرجى التحقق والتفعيل.`;
-            window.location.href = `https://wa.me{encodeURIComponent(msg)}`;
+            let msg = `أهلاً ملاكي، أريد الاشتراك في ب
         }
     </script>
 </body>
