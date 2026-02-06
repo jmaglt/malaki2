@@ -20,60 +20,68 @@
     </div>
 
     <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-4">
-        
+        <!-- باقة 10 آلاف -->
         <div class="package-card p-6 rounded-2xl shadow-lg border-2 border-blue-500">
             <h3 class="text-xl font-bold text-blue-400 mb-2">باقة الشهر الملكية 👑</h3>
             <p class="text-4xl font-black text-white mb-4">10,000 <span class="text-sm font-normal">د.ع</span></p>
             <p class="text-sm">150 كيكا بايت | 30 يوم</p>
-            <button onclick="selectPkg('شهر - 10000', '150 كيكا')" class="mt-4 bg-blue-600 w-full py-2 rounded-xl font-bold hover:bg-blue-500 transition">اختيار الباقة</button>
+            <button onclick="selectPkg('الشهر الملكية', '10,000')" class="mt-4 bg-blue-600 w-full py-2 rounded-xl font-bold hover:bg-blue-500 transition">اختيار الباقة</button>
         </div>
 
+        <!-- باقة 4 آلاف -->
         <div class="package-card p-6 rounded-2xl shadow-md">
             <h3 class="text-lg font-bold text-blue-400 mb-2">باقة الأسبوع</h3>
             <p class="text-3xl font-black text-white mb-4">4,000 <span class="text-sm font-normal">د.ع</span></p>
             <p class="text-sm">70 كيكا بايت | 7 أيام</p>
-            <button onclick="selectPkg('أسبوع - 4000', '70 كيكا')" class="mt-4 bg-blue-600 w-full py-2 rounded-xl font-bold hover:bg-blue-500 transition">اختيار الباقة</button>
+            <button onclick="selectPkg('الأسبوع', '4,000')" class="mt-4 bg-blue-600 w-full py-2 rounded-xl font-bold hover:bg-blue-500 transition">اختيار الباقة</button>
         </div>
 
+        <!-- باقة ألف -->
         <div class="package-card p-6 rounded-2xl shadow-md">
             <h3 class="text-lg font-bold text-blue-400 mb-2">باقة اليومين</h3>
             <p class="text-3xl font-black text-white mb-4">1,000 <span class="text-sm font-normal">د.ع</span></p>
             <p class="text-sm">20 كيكا بايت | يومين</p>
-            <button onclick="selectPkg('يومين - 1000', '20 كيكا')" class="mt-4 bg-blue-600 w-full py-2 rounded-xl font-bold hover:bg-blue-500 transition">اختيار الباقة</button>
+            <button onclick="selectPkg('اليومين', '1,000')" class="mt-4 bg-blue-600 w-full py-2 rounded-xl font-bold hover:bg-blue-500 transition">اختيار الباقة</button>
         </div>
     </div>
 
+    <!-- قسم الدفع بدون واتساب ولا صور -->
     <div id="payment-section" class="max-w-md mx-auto mt-10 p-6 package-card rounded-2xl shadow-xl hidden">
         <h2 class="text-xl font-bold mb-4 text-center">تأكيد الاشتراك: <span id="selected-name" class="text-blue-400"></span></h2>
-        
+
         <div class="space-y-4">
-            <div class="bg-slate-800 p-3 rounded-xl text-xs">
-                📌 زين كاش / آسيا حوالة: <span class="text-blue-400 font-bold">07713948071</span><br>
-                📌 سوبر كي / ماستر كارد: <span class="text-blue-400 font-bold">5852176006</span>
+            <div class="bg-slate-900 p-4 rounded-xl border border-blue-500/30">
+                <p class="text-center text-sm mb-2 text-slate-300">قم بتحويل المبلغ إلى الأرقام التالية:</p>
+                <div class="text-sm space-y-2">
+                    <p>📌 زين كاش / آسيا: <span class="text-blue-400 font-bold tracking-wider">07713948071</span></p>
+                    <p>📌 ماستر كارد: <span class="text-blue-400 font-bold tracking-wider">5852176006</span></p>
+                </div>
             </div>
-            
-            
-            
+
+            <div class="text-xs text-slate-400 text-center">
+                بعد التحويل، سيصلك كود التفعيل تلقائياً على رقمك المرتبط بالدفع.
+            </div>
+
+            <button onclick="confirmOrder()" class="w-full bg-green-600 py-3 rounded-xl font-black text-white shadow-xl hover:bg-green-500 transition">تأكيد الاشتراك الآن</button>
+        </div>
+        
+        <div id="success-msg" class="hidden mt-4 p-3 bg-blue-900/40 border border-blue-500 text-blue-200 text-sm text-center rounded-lg">
+            تم استلام طلبك، جاري التحقق من عملية التحويل...
         </div>
     </div>
 
     <script>
-        let selected = "";
-        let capacity = "";
-
-        function selectPkg(name, cap) 
-            selected = name;
-            capacity = cap;
-            document.getElementById('selected-name').innerText = name;
+        function selectPkg(name, price) {
+            document.getElementById('selected-name').innerText = name + " (" + price + " د.ع)";
             document.getElementById('payment-section').classList.remove('hidden');
+            document.getElementById('success-msg').classList.add('hidden');
             window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
         }
 
-        function sendOrder() {
-            // تأكد من وضع رقم الواتساب الصحيح هنا أيضاً
-            let msg = `أهلاً ملاكي، أريد الاشتراك في ب
+        function confirmOrder() {
+            document.getElementById('success-msg').classList.remove('hidden');
+            // هنا لا يوجد توجيه للواتساب، فقط رسالة تأكيد للمستخدم
         }
     </script>
 </body>
 </html>
-
